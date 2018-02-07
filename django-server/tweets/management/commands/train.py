@@ -46,4 +46,4 @@ class Command(BaseCommand):
       chunks = to_chunks(all_labelled_datumized_tweets, 100)
       for chunk in chunks:
           client.train(chunk)
-    client.save()
+      client.save()
