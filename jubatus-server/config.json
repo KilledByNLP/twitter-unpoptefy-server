@@ -1,0 +1,36 @@
+{
+  "method": "AROW",
+  "converter": {
+    "num_filter_types": {},
+    "num_filter_rules": [],
+    "string_filter_types": {},
+    "string_filter_rules": [],
+    "num_types": {},
+    "num_rules": [],
+    "string_types": {
+      "unigram": { "method": "ngram", "char_num": "1" },
+      "bigram": { "method": "ngram", "char_num": "2" },
+      "trigram": { "method": "ngram", "char_num": "3" },
+      "space_split":  { "method": "split", "separators": " " },
+      "mecab": {
+        "method": "dynamic",
+        "path": "/usr/local/Cellar/jubatus/1.0.7/lib/jubatus/plugin/libmecab_splitter.dylib",
+        "function": "create",
+        "arg": "-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd/",
+        "ngram": "1",
+        "base": "false",
+        "include_features": "*",
+        "exclude_features": ""
+      }
+    },
+    "string_rules": [
+      { "key": "text_mecab", "type": "mecab", "sample_weight": "bin", "global_weight": "bin" },
+      { "key": "text_unigram", "type": "unigram", "sample_weight": "bin", "global_weight": "bin" },
+      { "key": "text_bigram", "type": "bigram", "sample_weight": "bin", "global_weight": "bin" },
+      { "key": "text_trigram", "type": "trigram", "sample_weight": "bin", "global_weight": "bin" }
+    ]
+  },
+  "parameter": {
+    "regularization_weight" : 1.0
+  }
+}
