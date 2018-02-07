@@ -9,10 +9,6 @@ from django.views.decorators.csrf import csrf_exempt
 import jubatus
 from jubatus.common import Datum
 
-import MeCab
-mecab = MeCab.Tagger('-Owakati -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd/')
-mecab.parse('.')
-
 # Create your views here.
 @csrf_exempt
 def index(request):
@@ -24,7 +20,7 @@ def index(request):
     try:
         tweets = json.loads(request.body.decode('utf-8'))
         tweet_datums = [Datum({
-            'text_mecab': mecab.parse(tweet['body']).strip(),
+            'text_mecab': tweet['body'],
             'text_unigram': tweet['body'],
             'text_bigram': tweet['body'],
             'text_trigram': tweet['body']

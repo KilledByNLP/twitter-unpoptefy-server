@@ -14,16 +14,12 @@ from ...models import *
 import jubatus
 from jubatus.common import Datum
 
-import MeCab
-mecab = MeCab.Tagger('-Owakati -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd/')
-mecab.parse('.')
-
 def to_datum(tweet):
     text = tweet.text
     text = text.replace('#ポプテピピック', '')
     text = text.replace('#PPTP', '')
     tweet_datum = Datum({
-        'text_mecab': mecab.parse(text).strip(),
+        'text_mecab': text,
         'text_unigram': text,
         'text_bigram': text,
         'text_trigram': text,
