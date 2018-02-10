@@ -20,7 +20,6 @@ def to_datum(tweet):
     text = text.replace('#PPTP', '')
     tweet_datum = Datum({
         'text_mecab': text,
-        'text_unigram': text,
         'text_bigram': text,
         'text_trigram': text,
     })
